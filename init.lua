@@ -232,6 +232,28 @@ function whiteip()
         return false
 end
 
+function say_json(str)
+    ngx.header['Content-Type'] = 'application/json; charset=utf-8'
+    ngx.say(str)
+end
+
+function blockipfile()
+    local ipfile = io.open(ipBlocklist_file,"r")
+    if ipfile==nil then
+        return
+    end
+    for line in ipfile:lines() do
+                say_json(line)
+                say_json(os.time())
+        if getClientIp() == ip then
+                ngx.exit(403)
+                return true
+        end
+    end
+    ipfile:close()
+end
+
+
 function blockip()
      if next(ipBlocklist) ~= nil then
          for _,ip in pairs(ipBlocklist) do
