@@ -239,11 +239,12 @@ function whiteipfile()
     if ipfile == nil then
         return
     end
-    for line in ipfile:lines() do
+    for ip in ipfile:lines() do
         if getClientIp() == ip then
             return true
         end
     end 
+    ipfile:close()
 end
 
 
