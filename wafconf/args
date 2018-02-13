@@ -1,7 +1,7 @@
 \.\./
 \:\$
 \$\{
-select.+(from|limit)
+select.+(limit)
 (?:(union(.*?)select))
 having|rongjitest
 sleep\((\s*)(\d*)(\s*)\)
