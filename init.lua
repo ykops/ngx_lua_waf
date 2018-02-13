@@ -259,7 +259,7 @@ function blockipfile()
     if ipfile==nil then
         return
     end
-    for line in ipfile:lines() do
+    for ip in ipfile:lines() do
         if getClientIp() == ip then
                 ngx.exit(403)
                 return true
