@@ -234,6 +234,18 @@ function whiteip()
 end
 
 
+function whiteipfile()
+    local ipfile = io.open(ipWhitelist_file,"r")
+    if ipfile == nil then
+        return
+    end
+    for line in ipfile:lines() do
+        if getClientIp() == ip then
+            return true
+        end
+    end 
+end
+
 
 -- todo 增加对IP禁峰时间限制  比较限制24小时
 -- 测试输出
