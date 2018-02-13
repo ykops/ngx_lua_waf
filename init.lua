@@ -232,6 +232,10 @@ function whiteip()
         return false
 end
 
+
+
+-- todo 增加对IP禁峰时间限制  比较限制24小时
+-- 测试输出
 function say_json(str)
     ngx.header['Content-Type'] = 'application/json; charset=utf-8'
     ngx.say(str)
@@ -243,8 +247,6 @@ function blockipfile()
         return
     end
     for line in ipfile:lines() do
-                say_json(line)
-                say_json(os.time())
         if getClientIp() == ip then
                 ngx.exit(403)
                 return true
